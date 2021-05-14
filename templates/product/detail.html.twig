@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+
+{% block body %}
+
+    <div>
+        <div>{{ product.name }}</div>
+        <div>{{ product.price }}</div>
+        <div>
+            {% if (product.image) %}
+                <img src="{{'/uploads/' ~ product.image}}" />
+            {% else %}
+                <div>san pham khong có ảnh</div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

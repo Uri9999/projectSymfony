@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
+    <style>
+        input, button, select, textarea {
+            display: block;
+            width: 100%;
+        }
+        .select-category {
+            display: block;
+        }
+        
+    </style>
+{% endblock %}
+{% block body %}
+
+    {{ form_start(formUpdateProduct) }}
+   
+    {{ form_widget(formUpdateProduct) }}
+    {{ form_errors(formUpdateProduct) }}
+
+
+   {{ form_end(formUpdateProduct) }}
+
+{% endblock %}
+
+{% block javascripts %}
+<script> src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"</script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    $(function(){
+        $('.select-category').select2({
+            minimumInputLength: 3
+        });
+    })
+</script>
+{% endblock %}

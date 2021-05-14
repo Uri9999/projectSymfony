@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}find product{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    a {
+            text-decoration: none;
+            display: inline-block;
+            width: auto;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid black;
+            padding: 0px 10px;
+            color: #cd20e0;
+            border-radius: 4%;
+            background: #d4e03f;
+            transition: .7s;
+        }
+        a:hover {
+            background: #21fd09;
+        }
+        .align-center {
+            margin: 0 auto;
+        }
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+
+<div class="example-wrapper">
+    <table class="table table-striped " id="customers">
+        <thead class="thead-dark">
+
+        <tr>
+            <th>Id</th>
+            <th>Product name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Detail</th>
+            <th>Update</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>${{ product.price }}</td>
+                <td>{{ product.category }}</td>
+                <td>
+                    <a href="{{ path ('product-detail', {id: product.id}) }}" class="btn btn-primary">Detail</a>
+                </td>
+                <td>
+                    <a href="{{ path ('product-update', {id: product.id}) }}" class="btn btn-primary">Update</a>
+                </td>
+                <td>
+                    <a href="{{ path ('product-delete', {id: product.id}) }}" class="btn btn-danger">Remove</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+{% endblock %}

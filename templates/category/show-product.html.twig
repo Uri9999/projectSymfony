@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+ 
+<div>
+
+    {% if(products)  %}
+        {% for product in products %}
+            <div>{{ product.name }}</div>
+        {% endfor %}
+    {% else %}
+        <div> khong co san pham nao </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
